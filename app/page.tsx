@@ -30,18 +30,23 @@ export default function SinglePageZeroPortfolio() {
           </div>
         )
       })}
-      <Divider className="my-4" />
+      <Divider
+        className="my-4"
+        style={{
+          "--stagger-index": indexCount + 1,
+        } as React.CSSProperties}
+      />
       <Subheading
         level={2}
         style={{
-          "--stagger-index": indexCount + 1,
+          "--stagger-index": indexCount + 2,
         } as React.CSSProperties}
       >
         Building
       </Subheading>
       <Text
         style={{
-          "--stagger-index": indexCount + 2,
+          "--stagger-index": indexCount + 3,
         } as React.CSSProperties}
       >
         I build lots of things, here’s a few:
@@ -49,7 +54,7 @@ export default function SinglePageZeroPortfolio() {
       <ul
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 orchestration"
         style={{
-          "--stagger-index": indexCount + 3,
+          "--stagger-index": indexCount + 4,
         } as React.CSSProperties}
       >
         {projects.map((project) => {
@@ -80,18 +85,23 @@ export default function SinglePageZeroPortfolio() {
           )
         })}
       </ul>
-      <Divider className="my-4" />
+      <Divider
+        className="my-4"
+        style={{
+          "--stagger-index": indexCount + 1,
+        } as React.CSSProperties}
+      />
       <Subheading
         level={2}
         style={{
-          "--stagger-index": indexCount + 1,
+          "--stagger-index": indexCount + 2,
         } as React.CSSProperties}
       >
         Connect
       </Subheading>
       <Text
         style={{
-          "--stagger-index": indexCount + 2,
+          "--stagger-index": indexCount + 3,
         } as React.CSSProperties}
       >
         I’m on{" "}
