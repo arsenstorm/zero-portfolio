@@ -25,13 +25,22 @@ export default function RootLayout({
 	const regionNames = new Intl.DisplayNames(["en"], { type: "region" });
 
 	const _headers = headers();
-	const countryCode = _headers.get("x-vercel-ip-country") || "GB";
+	const countryCode = _headers.get("x-vercel-ip-country") || "";
+	const city = _headers.get("x-vercel-ip-city") || "";
 
 	const countriesWithThe = ["GB", "US", "AE"];
 	const prependToCountry = countriesWithThe.includes(countryCode) ? "the " : "";
 
 	const countryName = regionNames.of(countryCode);
-	const location = `Someone in ${prependToCountry}${countryName}`;
+	let location = "";
+
+	if (city && countryCode) {
+		location = `Someone in ${city}, ${countryCode}`;
+	} else if (countryCode) {
+		location = `Someone in ${prependToCountry}${countryName}`;
+	} else {
+		location = "Someone somewhere";
+	}
 
 	return (
 		<html lang="en">
