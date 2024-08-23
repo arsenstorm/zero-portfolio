@@ -2,7 +2,7 @@
 
 import { clsx } from 'clsx'
 import { Link } from './link'
-import React from 'react'
+import type React from 'react'
 
 export function Text({ className, ...props }: Readonly<React.ComponentPropsWithoutRef<'p'>>) {
   return (
