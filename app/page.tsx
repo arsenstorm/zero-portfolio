@@ -55,7 +55,7 @@ export default function SinglePageZeroPortfolio() {
 					} as React.CSSProperties
 				}
 			>
-				I build lots of things, here’s a few:
+				I build a lot of things; here’s a few:
 			</Text>
 			<ul
 				className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 orchestration"
@@ -186,8 +186,8 @@ const projects = [
 	},
 	{
 		id: 3,
-		title: "Afinity",
-		description: "Alternative things to do and ways to live.",
-		link: "https://afinity.app",
+		title: "Socrasica",
+		description: "Helping students apply to university.",
+		link: "https://socrasica.com",
 	},
 ];
