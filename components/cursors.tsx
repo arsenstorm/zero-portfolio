@@ -5,7 +5,7 @@ import { room } from "@/utils/get-room";
 import { Badge } from "./badge";
 import { useEffect, useState } from "react";
 
-const colors = [
+export const colors = [
 	"red",
 	"green",
 	"blue",
@@ -36,17 +36,30 @@ export function CursorsProvider({
 		setColor(colors[Math.floor(Math.random() * colors.length)]);
 	}, []);
 
-	const CursorComponent = () => {
-		return <Badge color={color}>{location}</Badge>;
-	};
+	room.useSyncPresence({
+		location,
+		color,
+	});
 
 	return (
 		<Cursors
 			room={room}
-			renderCursor={CursorComponent}
+			renderCursor={(props) => (
+				<CustomCursor
+					color={props.presence.color}
+					location={props.presence.location}
+				/>
+			)}
 			className="min-h-screen min-w-screen"
 		>
 			{children}
 		</Cursors>
 	);
+}
+
+function CustomCursor({
+	location,
+	color,
+}: { location: string; color: (typeof colors)[number] }) {
+	return <Badge color={color}>{location}</Badge>;
 }
