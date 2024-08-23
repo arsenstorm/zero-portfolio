@@ -166,7 +166,7 @@ const intro = [
 		things.
 	</Text>,
 	<Text key="2">
-		I live in <Strong>London</Strong>, so, if you’re around, you{" "}
+		I live in <Strong>London</Strong>, so if you’re around, you{" "}
 		<span className="italic">might</span> see me.
 	</Text>,
 ];

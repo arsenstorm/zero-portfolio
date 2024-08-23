@@ -7,6 +7,9 @@ import "@/styles/globals.css";
 import { CursorsProvider } from "@/components/cursors";
 import { headers } from "next/headers";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -21,7 +24,7 @@ export default function RootLayout({
 }>) {
 	const _headers = headers();
 	const country = _headers.get("x-vercel-ip-country") || "Outer Space";
-	const city = _headers.get("x-vercel-ip-country-city") || "Somewhere";
+	const city = _headers.get("x-vercel-ip-city") || "Somewhere";
 	const location = `${city}, ${country}`;
 
 	return (
