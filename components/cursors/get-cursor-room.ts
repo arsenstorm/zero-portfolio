@@ -1,4 +1,4 @@
-import type { colors } from "@/components/cursors";
+import type { colors } from "@/components/cursors/colours";
 import { init } from "@instantdb/react";
 
 type Schema = {

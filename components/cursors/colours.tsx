@@ -1,12 +1,3 @@
-"use client";
-
-import { Cursors } from "@instantdb/react";
-import { room } from "@/utils/get-room";
-import { Badge } from "./badge";
-import { useEffect, useState } from "react";
-import CursorPointer from "@/icons/pointer.svg";
-import clsx from "clsx";
-
 export const colors = [
 	"red",
 	"green",
@@ -57,52 +48,3 @@ export const cursorColors = {
 	rose: "fill-rose-500/15 text-rose-700 dark:fill-rose-500/10 dark:text-rose-400",
 	zinc: "fill-zinc-500/15 text-zinc-700 dark:fill-zinc-500/10 dark:text-zinc-400",
 } as const;
-
-export function CursorsProvider({
-	children,
-	location = "Someone",
-}: { readonly children: React.ReactNode; readonly location: string }) {
-	const [color, setColor] = useState<(typeof colors)[number]>("red");
-
-	useEffect(() => {
-		setColor(colors[Math.floor(Math.random() * colors.length)]);
-	}, []);
-
-	room.useSyncPresence({
-		location,
-		color,
-	});
-
-	return (
-		<Cursors
-			room={room}
-			renderCursor={(props) => (
-				<CustomCursor
-					color={props.presence.color}
-					location={props.presence.location}
-				/>
-			)}
-			className="min-h-screen min-w-screen"
-		>
-			{children}
-		</Cursors>
-	);
-}
-
-function CustomCursor({
-	location,
-	color,
-}: { location: string; color: (typeof colors)[number] }) {
-	return (
-		<div className="relative">
-			<div className="absolute top-0 left-0">
-				<CursorPointer
-					className={clsx("size-5 rotate-12", cursorColors[color])}
-				/>
-			</div>
-			<Badge color={color} className="absolute top-2 left-2">
-				{location}
-			</Badge>
-		</div>
-	);
-}

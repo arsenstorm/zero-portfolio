@@ -1,11 +1,11 @@
 "use client";
 
-import { Heading, Subheading } from "@/components/heading";
-import { Code, Strong, Text, TextLink } from "@/components/text";
+import { Heading, Subheading } from "@/components/ui/heading";
+import { Code, Strong, Text, TextLink } from "@/components/ui/text";
 import clsx from "clsx";
 
 import OpenInNewTab from "@/icons/open-in-new-tab.svg";
-import { Divider } from "@/components/divider";
+import { Divider } from "@/components/ui/divider";
 
 export default function SinglePageZeroPortfolio() {
 	let indexCount = 0;

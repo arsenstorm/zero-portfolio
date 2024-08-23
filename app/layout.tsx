@@ -1,10 +1,10 @@
 // Functions
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { CursorsProvider } from "@/components/cursors/cursors";
 
 // Styles
 import "@/styles/globals.css";
-import { CursorsProvider } from "@/components/cursors";
 import { headers } from "next/headers";
 
 export const dynamic = "force-dynamic";

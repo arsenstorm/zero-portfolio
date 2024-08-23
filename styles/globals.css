@@ -21,3 +21,7 @@
     transform: translateY(0px);
   }
 }
+
+* {
+  cursor: none;
+}
