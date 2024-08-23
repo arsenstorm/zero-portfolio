@@ -28,7 +28,7 @@ export const colors = [
 
 export function CursorsProvider({
 	children,
-	location = "Someone, Somewhere",
+	location = "Someone",
 }: { readonly children: React.ReactNode; readonly location: string }) {
 	const [color, setColor] = useState<(typeof colors)[number]>("red");
 

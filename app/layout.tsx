@@ -22,10 +22,16 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	const regionNames = new Intl.DisplayNames(["en"], { type: "region" });
+
 	const _headers = headers();
-	const country = _headers.get("x-vercel-ip-country") || "Outer Space";
-	const city = _headers.get("x-vercel-ip-city") || "Somewhere";
-	const location = `${city}, ${country}`;
+	const countryCode = _headers.get("x-vercel-ip-country") || "GB";
+
+	const countriesWithThe = ["GB", "US", "AE"];
+	const prependToCountry = countriesWithThe.includes(countryCode) ? "the " : "";
+
+	const countryName = regionNames.of(countryCode);
+	const location = `Someone in ${prependToCountry}${countryName}`;
 
 	return (
 		<html lang="en">
