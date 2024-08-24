@@ -109,12 +109,50 @@ export default function SinglePageZeroPortfolio() {
 					} as React.CSSProperties
 				}
 			>
-				Connect
+				Experiments
 			</Subheading>
 			<Text
 				style={
 					{
 						"--stagger-index": indexCount + 3,
+					} as React.CSSProperties
+				}
+			>
+				If you’re unfortunate enough to stumble across my site when no one is
+				around, you’ll only see one cursor—<Strong>yours</Strong>.
+			</Text>
+			<Text
+				style={
+					{
+						"--stagger-index": indexCount + 4,
+					} as React.CSSProperties
+				}
+			>
+				Otherwise, you’ll see <Strong>everyone</Strong> else’s (and they’ll see
+				yours)!
+			</Text>
+			<Divider
+				className="my-4"
+				style={
+					{
+						"--stagger-index": indexCount + 5,
+					} as React.CSSProperties
+				}
+			/>
+			<Subheading
+				level={2}
+				style={
+					{
+						"--stagger-index": indexCount + 6,
+					} as React.CSSProperties
+				}
+			>
+				Connect
+			</Subheading>
+			<Text
+				style={
+					{
+						"--stagger-index": indexCount + 7,
 					} as React.CSSProperties
 				}
 			>
