@@ -1,9 +1,18 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import { Badge } from "../ui/badge";
+
+// UI
+import { Badge } from "@/components/ui/badge";
 import { cursorColors } from "./colours";
+
+// Icons
 import CursorPointer from "@/icons/pointer.svg";
+
+// Hooks
+import { useIdle } from "@mantine/hooks";
+
+// Utils
 import clsx from "clsx";
 
 export function SelfCursor({
@@ -11,6 +20,9 @@ export function SelfCursor({
 }: {
 	readonly color: keyof typeof cursorColors;
 }) {
+	const mouseIdle = useIdle(30000, {
+		events: ["mousemove"],
+	});
 	const cursorRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
@@ -42,8 +54,10 @@ export function SelfCursor({
 				zIndex: 9999,
 			}}
 		>
-			<div className="relative" ref={cursorRef}>
-				<div className="absolute top-0 -left-[3px]">
+			<div className={clsx("relative", mouseIdle && "hidden")} ref={cursorRef}>
+				<div
+					className="absolute top-0 -left-[3px]"
+				>
 					<CursorPointer
 						className={clsx("size-5 rotate-12", cursorColors[color])}
 					/>
