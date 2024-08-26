@@ -10,6 +10,7 @@ type RoomSchema = {
 		presence: {
 			location: string;
 			color: (typeof colors)[number];
+			idle: boolean;
 		};
 	};
 };

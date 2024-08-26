@@ -15,10 +15,17 @@ import { Badge } from "../ui/badge";
 // Colours
 import { colors, cursorColors } from "./colours";
 
+// Hooks
+import { useIdle } from "@mantine/hooks";
+
 export function CursorsProvider({
 	children,
 	location = "Someone",
 }: { readonly children: React.ReactNode; readonly location: string }) {
+	const mouseIdle = useIdle(30000, {
+		events: ["mousemove"],
+	});
+
 	const [color, setColor] = useState<(typeof colors)[number]>("red");
 
 	useEffect(() => {
@@ -28,6 +35,7 @@ export function CursorsProvider({
 	room.useSyncPresence({
 		location,
 		color,
+		idle: mouseIdle,
 	});
 
 	return (
@@ -37,6 +45,7 @@ export function CursorsProvider({
 				<CustomCursor
 					color={props.presence.color}
 					location={props.presence.location}
+					hidden={props.presence.idle}
 				/>
 			)}
 			className="min-h-screen min-w-screen"
@@ -50,9 +59,14 @@ export function CursorsProvider({
 function CustomCursor({
 	location,
 	color,
-}: { location: string; color: (typeof colors)[number] }) {
+	hidden,
+}: {
+	location: string;
+	color: (typeof colors)[number];
+	hidden: boolean;
+}) {
 	return (
-		<div className="relative">
+		<div className={clsx("relative", hidden && "hidden")}>
 			<div className="absolute top-0 left-0">
 				<CursorPointer
 					className={clsx("size-5 rotate-12", cursorColors[color])}
