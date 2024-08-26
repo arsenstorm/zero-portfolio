@@ -27,7 +27,10 @@ export async function getAndSetLastVisitor() {
 	await kv.set("last-visitor", setLastVisitor);
 
 	return {
-		lastVisitor: typeof lastVisitor === "string" ? lastVisitor : defaultUnknown,
-		currentVisitor: setLastVisitor,
+		lastVisitor:
+			typeof lastVisitor === "string"
+				? decodeURIComponent(lastVisitor)
+				: defaultUnknown,
+		currentVisitor: decodeURIComponent(setLastVisitor),
 	};
 }
