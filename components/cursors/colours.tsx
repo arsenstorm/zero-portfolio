@@ -19,6 +19,8 @@ export const colors = [
 	"zinc",
 ] as const;
 
+export type Color = (typeof colors)[number];
+
 export const cursorColors = {
 	red: "fill-red-500/15 text-red-700 dark:fill-red-500/10 dark:text-red-400",
 	green:

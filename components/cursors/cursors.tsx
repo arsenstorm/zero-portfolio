@@ -13,7 +13,7 @@ import { SelfCursor } from "./self-cursor";
 import { Badge } from "../ui/badge";
 
 // Colours
-import { colors, cursorColors } from "./colours";
+import { type Color, colors, cursorColors } from "./colours";
 
 // Hooks
 import { useIdle } from "@mantine/hooks";
@@ -26,7 +26,7 @@ export function CursorsProvider({
 		events: ["mousemove"],
 	});
 
-	const [color, setColor] = useState<(typeof colors)[number]>("red");
+	const [color, setColor] = useState<Color>("red");
 
 	useEffect(() => {
 		setColor(colors[Math.floor(Math.random() * colors.length)]);
@@ -62,7 +62,7 @@ function CustomCursor({
 	hidden,
 }: {
 	location: string;
-	color: (typeof colors)[number];
+	color: Color;
 	hidden: boolean;
 }) {
 	return (

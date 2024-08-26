@@ -1,4 +1,4 @@
-import type { colors } from "@/components/cursors/colours";
+import type { Color } from "@/components/cursors/colours";
 import { init } from "@instantdb/react";
 
 type Schema = {
@@ -9,7 +9,7 @@ type RoomSchema = {
 	chat: {
 		presence: {
 			location: string;
-			color: (typeof colors)[number];
+			color: Color;
 			idle: boolean;
 		};
 	};
