@@ -3,9 +3,7 @@ import { headers } from "next/headers";
 import { kv } from "@vercel/kv";
 import { type NextRequest, NextResponse } from "next/server";
 
-export const config = {
-	runtime: "edge",
-};
+export const runtime = "edge"
 
 export async function GET(req: NextRequest) {
 	const ip = ipAddress(req) || "";
