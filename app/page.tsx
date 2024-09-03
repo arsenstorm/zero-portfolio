@@ -1,21 +1,27 @@
-// Functions
-import { getAndSetLastVisitor } from "@/actions/get-and-set-last-visitor";
+"use client";
 
 // Components
 import Portfolio from "@/components/portfolio/main";
 import { CursorsProvider } from "@/components/cursors/cursors";
 import { ByeBye } from "@/components/portfolio/bye-bye";
+import { useState, useEffect } from "react";
 
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
+export default function PortfolioPage() {
+	const [lastVisitor, setLastVisitor] = useState<string>("Unknown");
+	const [currentVisitor, setCurrentVisitor] = useState<string>("Unknown");
 
-export default async function PortfolioPage() {
-	const { currentVisitor: location, lastVisitor } =
-		await getAndSetLastVisitor();
+	useEffect(() => {
+		fetch("/api/track")
+			.then((res) => res.json())
+			.then((data) => {
+				setLastVisitor(data.lastVisitor);
+				setCurrentVisitor(data.currentVisitor);
+			});
+	}, []);
 
 	return (
-		<CursorsProvider location={location || "Unknown"}>
-			<Portfolio lastVisitor={lastVisitor} />
+		<CursorsProvider location={currentVisitor || "Unknown"}>
+			<Portfolio lastVisitor={lastVisitor || "Unknown"} />
 			<ByeBye />
 		</CursorsProvider>
 	);
