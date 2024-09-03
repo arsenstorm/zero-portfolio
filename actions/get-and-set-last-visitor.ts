@@ -7,6 +7,7 @@ export async function getAndSetLastVisitor() {
 	const _headers = headers();
 	const regionNames = new Intl.DisplayNames(["en"], { type: "region" });
 
+	const ip = _headers.get("x-forwarded-for") || "";
 	const countryCode = _headers.get("x-vercel-ip-country") || "";
 	const city = _headers.get("x-vercel-ip-city") || "";
 	const countryName = regionNames.of(countryCode);
@@ -25,6 +26,11 @@ export async function getAndSetLastVisitor() {
 	const lastVisitor = (await kv.get("last-visitor")) ?? defaultUnknown;
 
 	await kv.set("last-visitor", setLastVisitor);
+
+	if (ip !== "") {
+		// i want to store the ip address as a key so we can see where people are visiting from
+		await kv.set(ip, setLastVisitor);
+	}
 
 	return {
 		lastVisitor:
