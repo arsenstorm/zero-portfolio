@@ -60,11 +60,11 @@ function CustomCursor({
 	location,
 	color,
 	hidden,
-}: {
+}: Readonly<{
 	location: string;
 	color: Color;
 	hidden: boolean;
-}) {
+}>) {
 	return (
 		<div className={clsx("relative", hidden && "hidden")}>
 			<div className="absolute top-0 left-0">

@@ -5,7 +5,7 @@ import { Strong, Text } from "@/components/ui/text";
 export function WhereIsLastVisitor({
 	lastVisitor,
 	style,
-}: { lastVisitor?: string; style: React.CSSProperties }) {
+}: Readonly<{ lastVisitor?: string; style: React.CSSProperties }>) {
 	if (!lastVisitor) return null;
 
 	return (

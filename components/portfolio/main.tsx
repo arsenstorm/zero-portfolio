@@ -12,7 +12,7 @@ import { EmailMe } from "./email-me";
 export default function Portfolio({
 	lastVisitor,
 }: {
-	lastVisitor?: string;
+	readonly lastVisitor?: string;
 }) {
 	let indexCount = 0;
 

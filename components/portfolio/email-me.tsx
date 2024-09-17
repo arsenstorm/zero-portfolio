@@ -7,7 +7,7 @@ import { Code, Text, TextLink } from "@/components/ui/text";
 import { getCommandKey } from "@/utils/get-command-key";
 import { useHotkeys } from "@mantine/hooks";
 
-export function EmailMe({ style }: { style: React.CSSProperties }) {
+export function EmailMe({ style }: { readonly style: React.CSSProperties }) {
 	useHotkeys([
 		[
 			"mod+b",
