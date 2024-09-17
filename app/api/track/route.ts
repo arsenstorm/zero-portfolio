@@ -6,7 +6,7 @@ import { type NextRequest, NextResponse } from "next/server";
 export const runtime = "edge"
 
 export async function GET(req: NextRequest) {
-	const ip = ipAddress(req) || "";
+	const ip = ipAddress(req) ?? "";
 	const _headers = headers();
 	const regionNames = new Intl.DisplayNames(["en"], { type: "region" });
 	const defaultUnknown = "Somewhere else in the world";
@@ -14,8 +14,8 @@ export async function GET(req: NextRequest) {
 	let setLastVisitor = "";
 	let lastVisitor = "";
 
-	const countryCode = _headers.get("x-vercel-ip-country") || "";
-	const city = _headers.get("x-vercel-ip-city") || "";
+	const countryCode = _headers.get("x-vercel-ip-country") ?? "";
+	const city = _headers.get("x-vercel-ip-city") ?? "";
 	const countryName = regionNames.of(countryCode);
 
 	if (city && countryCode) {
