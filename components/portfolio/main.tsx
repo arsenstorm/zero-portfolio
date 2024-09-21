@@ -83,17 +83,23 @@ export default function Portfolio({
 								} as React.CSSProperties
 							}
 						>
-							<Text className="inline-flex items-center">
-								<TextLink
-									href={project.link}
-									target="_blank"
-									rel="noopener noreferrer"
-									className="underline"
-								>
-									{project.title}
-								</TextLink>
-								<OpenInNewTab className="size-4 ml-1" />
-							</Text>
+							{project.link ? (
+								<Text className="inline-flex items-center">
+									<TextLink
+										href={project.link}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="underline"
+									>
+										{project.title}
+									</TextLink>
+									<OpenInNewTab className="size-4 ml-1" />
+								</Text>
+							) : (
+								<Text>
+									<Strong>{project.title}</Strong>
+								</Text>
+							)}
 							<Text>{project.description}</Text>
 						</Card>
 					);
@@ -230,14 +236,31 @@ const projects = [
 	},
 	{
 		id: 2,
-		title: "NerveRift",
-		description: "Connecting the human mind to machine.",
-		link: "https://nerverift.com",
+		title: "Request Directory",
+		description: "A curated open-source API directory.",
+		link: "https://request.directory",
 	},
 	{
 		id: 3,
 		title: "Socrasica",
 		description: "Helping students apply to university.",
 		link: "https://socrasica.com",
+	},
+	{
+		id: 4,
+		title: "NerveRift",
+		description: "Connecting the human mind to machine.",
+		link: "https://nerverift.com",
+	},
+	{
+		id: 5,
+		title: "Amazonomics",
+		description: "Selling more on Amazon by seeing the trends.",
+		link: "https://beta.amazonomics.com",
+	},
+	{
+		id: 6,
+		title: "Rosel",
+		description: "A helpful voice assistant for the web.",
 	},
 ];
