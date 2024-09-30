@@ -255,7 +255,7 @@ const projects = [
 	{
 		id: 5,
 		title: "Amazonomics",
-		description: "Selling more on Amazon by seeing the trends.",
+		description: "Sell more on Amazon by seeing the trends.",
 		link: "https://beta.amazonomics.com",
 	},
 	{
